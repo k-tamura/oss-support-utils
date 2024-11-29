@@ -1,10 +1,11 @@
 # oss-support-utils
 OSS support utils just for me
 
-## Start up Keycloak container
+## Start up HA Keycloak containers w/ PostgreSQL
 
 ```bash
 $ cd keycloak
+$ docker compose -f postgres.yml up
 $ docker build . -t mykeycloak
 $ docker run --name mykeycloak -p 8443:8443 \
     -e KC_BOOTSTRAP_ADMIN_USERNAME=admin \
