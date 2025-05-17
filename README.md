@@ -1,7 +1,7 @@
 # oss-support-utils
 OSS support utils just for me
 
-## Start up HA Keycloak containers w/ PostgreSQL
+## Start up a Keycloak container w/ PostgreSQL
 
 ```bash
 $ cd keycloak
@@ -10,6 +10,20 @@ $ docker build . -t mykeycloak
 $ docker run --name mykeycloak -p 8443:8443 \
     -e KC_BOOTSTRAP_ADMIN_USERNAME=admin \
     -e KC_BOOTSTRAP_ADMIN_PASSWORD=password mykeycloak start
+```
+
+## Start up HA Keycloak (based on WildFly) containers w/ PostgreSQL
+
+```bash
+$ cd keycloak/WildFlyVer
+$ docker compose -f keycloak-postgres-jdbc-ping.yml up --scale keycloak=2
+```
+
+## Start up HA Keycloak (based on Quarkus) containers w/ PostgreSQL
+
+```bash
+$ cd keycloak/QuarkusVer
+$ docker compose -f keycloak-postgres-jdbc-ping.yml up --scale keycloak=2
 ```
 
 ## Install and start up Keycloak on JVM
